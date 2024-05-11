@@ -1,0 +1,15 @@
+
+class Vertex:
+    def __init__(self):
+        self.address = ''
+        self.edgesList = {} # {vertex1: distance1, vertex2: distance2}
+        
+    def __str__(self):
+        return "%s, %s" % (self.address, self.edgesList)
+        
+    def AddEdge(self, vrtx, distance):
+        self.edgesList[vrtx] = distance
+        
+    #def IsVertexAdjacent(self, vertex)
+    #return 
+    
