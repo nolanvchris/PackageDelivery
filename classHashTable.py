@@ -29,9 +29,13 @@ class HashTable:
                 return element[1]
         return None
     
-    def displayHashTableData(self, numOfEntries): 
-        i = 1
-        while i <= numOfEntries:
-            print(self.lookUp(i))
-            i += 1
-        print(f"\n--------------Hash Table Data consists of {numOfEntries} entries--------------\n")
+    def displayHashTableData(self): #numOfEntries): 
+        #i = 1
+        #while i <= numOfEntries:
+        #    print(self.lookUp(i))
+        #    i += 1
+        #print(f"\n--------------Hash Table Data consists of {numOfEntries} entries--------------\n")
+        
+        for bucket in self.hashTable:
+            for bucketListObject in bucket:
+                print(bucketListObject)

@@ -1,0 +1,61 @@
+#Truck Class:
+
+     #self.currentPackage = nextPackage
+        #self.currentAddress = nextPackage.address
+        #for package in self.packageList:
+        #    if nextPackage.id == package.id:
+        #        package.isDelivered = True
+        #        print(f'Delivered package: {self.currentPackage.id} @ {self.currentAddress}, current mileage: {self.milesTraveled:.2f} ---> ')
+        
+        #Iterate through packages and: 
+        #   1. Check if package has already been delivered, if so continue to the next package. 
+        #   2. For the current package, find the next closest package to deliver by calling the FindClosestUndeliveredPackage() function 
+        #   3. Set the current package isDelivered property to true before moving to the next package.
+        #for package in self.packageList: 
+        #    if package.isDelivered == False:
+        #        nextPackage = self.FindClosestUndeliveredPackage()
+        #        self.currentPackage = nextPackage #I need to track both the package and the address because the base case 'HUB' is only an address not a package.
+        #        self.currentAddress = nextPackage.address #Is currentAddress a 'package' object or an address string? Does it need to be consistent?
+        #        package.isDelivered = True
+        #        print(f'Delivered package: {self.currentPackage.id} @ {self.currentAddress}, current mileage: {self.milesTraveled:.2f} ---> ')
+        #    else:
+        #        continue
+
+    #def FindClosestUndeliveredPackage(self):
+    #    shortestDistance = float('inf')  # Use infinity for better readability
+    #    closestPackage = None  # Start with None to signify no package found yet
+#
+    #    for package in self.packageList:  # Iterate through all packages
+    #        if not package.isDelivered:  # Check if the package is undelivered
+    #            distance = self.FindDistanceBetweenAddresses(self.currentAddress, package.address)
+    #            if distance is not None and distance < shortestDistance:
+    #                shortestDistance = distance
+    #                closestPackage = package       
+#
+    #    # Only add to milesTraveled if a closestPackage was found
+    #    if closestPackage is not None:
+    #        self.milesTraveled += shortestDistance
+#
+    #    return closestPackage
+
+    
+        #for i, package in enumerate(self.packageList): #Base case: starting at the 'HUB'
+        #    if package.isDelivered == False:
+        #        distance = self.FindDistanceBetweenAddresses(self.currentAddress, package.address)
+        #        if distance < shortestDistance:
+        #            shortestDistance = distance
+        #            nextAddress = package.address
+                    
+    
+    #This function will be given two addresses and return the distance between them.
+    #def FindDistanceBetweenAddresses(self, from_address, to_address):
+    #    for i, row in enumerate(self.adjacencyMatrix):
+    #        if i > 1 and row[1] == from_address:
+    #            
+    #            for j, col in enumerate(row):
+    #                if self.adjacencyMatrix[1][j] == to_address:
+    #                    distance = float(self.adjacencyMatrix[i][j])
+    #                    return distance
+    
+    # truck1 packages: 4 19	20	21	28	40	14	15	16	25	26	34	11	23	6	12	17	31	32	22
+    # truck2 packages: 1 3	8	9	30	13	27	35	39	10	2	7	29	33	24	5	37	38	4	36	18

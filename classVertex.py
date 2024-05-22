@@ -2,7 +2,8 @@
 class Vertex:
     def __init__(self):
         self.address = ''
-        self.edgesList = {} # {vertex1: distance1, vertex2: distance2}
+        self.edgesList = {} # dictionary (order matters) {vertex1: distance1, vertex2: distance2}
+        self.packageId = -1
         
     def __str__(self):
         return "%s, %s" % (self.address, self.edgesList)
