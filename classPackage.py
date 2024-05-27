@@ -8,11 +8,8 @@ class Package:
         self.deadline = p_deadline
         self.weightKilo = int(p_weightKilo)
         self.specialNotes = p_specialNotes
-        self.isDelivered = False
-        self.deliveryTime = None
-        #self.vertex = vertex
-        
-    def __str__(self):
-        return "%s, %s, %s, %s, %s, %s, %s, %s" % (self.address, self.city, self.state, self.zip, self.deadline, self.weightKilo, self.specialNotes)
-    
-    #def AddVertexToCorrespondingPackage(self, vertex):
+        self.isDelivered = False 
+        self.deliveryDateTime = None
+        #self.truckMileageAtDelivery = None #
+        self.status = 'N/A'
+        self.truckId = None #track which truck the package is on.
