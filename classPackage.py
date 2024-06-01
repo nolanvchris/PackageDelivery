@@ -10,6 +10,8 @@ class Package:
         self.specialNotes = p_specialNotes
         self.isDelivered = False 
         self.deliveryDateTime = None
-        #self.truckMileageAtDelivery = None #
         self.status = 'N/A'
         self.truckId = None #track which truck the package is on.
+        
+    def __str__(self):
+        return "Address: %s %s %s %s  Weight: %s  Deadline: %s  Status: %s" % (self.address, self.city, self.state, self.zip, self.weightKilo, self.deadline, self.status)

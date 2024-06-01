@@ -1,5 +1,6 @@
 from datetime import datetime, time
 
+#O(n/k) Where n is the number of elements in the hash table divided by k, number of buckets. 
 class HashTable:
     def __init__(self, numOfBuckets = 10):
         self.hashTable = []

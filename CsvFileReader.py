@@ -1,5 +1,6 @@
 import csv
 
+# Time complexity: O(n) n grows with the number of rows.
 def readCsvFile(fileName):
     data = []
     with open(fileName, 'r') as file:

@@ -7,10 +7,13 @@ from classAdjacencyMatrix import AdjacencyMatrix
 from datetime import datetime, time
 from funcMenu import menu
 
-#Import the data from WGUPS distance file
+#Overall time Complexity: O(n^2)
+
+#Time complexity: O(n), Import the data from WGUPS distance file
 csvAdjacencyMatrix_distanceData = readCsvFile('WGUPS Distance Table.csv') 
 
-#This for loop will fill in a diagonal mirror (creating a symmetric matrix, or adjacency matrix) for the data in the csvAdjacencyMatrix_distanceData list.
+#Time complexity: O(n^2) for each new address, This for loop will fill in a diagonal mirror 
+#(creating a symmetric matrix, or adjacency matrix) for the data in the csvAdjacencyMatrix_distanceData list.
 #This will make it possible create a vertex for each row in the csvAdjacencyMatrix_distanceData file.
 for i, row in enumerate(csvAdjacencyMatrix_distanceData):
     for j, col in enumerate(row):
@@ -20,13 +23,13 @@ for i, row in enumerate(csvAdjacencyMatrix_distanceData):
 #Create an instance of the static adjacency matrix class. Other classes and functions can have access to the same adjacency matrix.
 AdjacencyMatrix.set_matrix(csvAdjacencyMatrix_distanceData)
 
-#Get package data as lists within a list: [['1', '195 W Oakland Ave', 'Salt Lake City', 'UT', '84115', '0.4375', '21', ''], ...]
+#Time complexity: O(n), Get package data as lists within a list: [['1', '195 W Oakland Ave', 'Salt Lake City', 'UT', '84115', '0.4375', '21', ''], ...]
 csvTable_packageData = readCsvFile('WGUPS Package File.csv') 
 
 #New instance of a hashtable.
 hashTable_packageData = HashTable()
 
-#Insert data from 'WGUPS Package File.csv' into the hash table in the form of package objects.
+#Time complexity: O(n), Insert data from 'WGUPS Package File.csv' into the hash table in the form of package objects.
 for row in csvTable_packageData:
         key = int(row[0])
         value = Package(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7]) #Insert package object into the value portion of the key value pair
@@ -84,24 +87,12 @@ truckFleetList[2].AddPackage(hashTable_packageData.lookUp(8))
 truckFleetList[2].AddPackage(hashTable_packageData.lookUp(26))
 truckFleetList[2].AddPackage(hashTable_packageData.lookUp(2))
 
-truckFleetList[0].DeliverPackages() #Deliver the Packages for truck 1
+truckFleetList[0].DeliverPackages() #Time complexity: O(n^2), Deliver the Packages for truck 1
 
 truckFleetList[1].startDateTime = datetime.combine(datetime.today(), time(9, 5)) #Start truck 2 at 9:05am
 truckFleetList[1].DeliverPackages() #Deliver the Packages for truck 2
 
-#Update the wrong address for package 9 in the hash table and the packages list in the truck.
-#First, iterate through the truck packages to find the one with the wrong address (package 9).
-#Second, update the information in the hash table first then update the truck package.
-for package in truckFleetList[2].packageList:
-    if package.address == hashTable_packageData.lookUp(9).address:
-        hashTable_packageData.lookUp(9).address = '410 S State St'
-        hashTable_packageData.lookUp(9).city = 'Salt Lake City'
-        hashTable_packageData.lookUp(9).state = 'UT'
-        hashTable_packageData.lookUp(9).zip = '84111'
-        package = hashTable_packageData.lookUp(9)
-        break
-        
 truckFleetList[2].startDateTime = datetime.combine(datetime.today(), time(10, 20)) #Start truck 3 at 10:20am
 truckFleetList[2].DeliverPackages() #Deliver the Packages for truck 2
 
-menu(truckFleetList)
+menu(truckFleetList, hashTable_packageData)
