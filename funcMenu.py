@@ -1,7 +1,8 @@
 
 from datetime import datetime, time
 
-#Total time complexity: O(n^2) as trucks and packages increase
+#Total time complexity: O(n) as trucks and packages increase
+#Total space complexity: O(n^2) for storing address information in the adjacency matrix
 def menu(p_truckFleetList, p_hashTable_packageData):
     
         #Start a loop for selecting a correct menu option.
@@ -46,6 +47,12 @@ def menu(p_truckFleetList, p_hashTable_packageData):
                     
                     for package in truck.packageList:
                         
+                        #If the user goes forward and then back in time we have to reset the wrong address.
+                        if package.specialNotes == 'Wrong address listed' and inquiryDateTime < truck.startDateTime: 
+                            package.address = '300 State St'
+                            package.city = 'Salt Lake City'
+                            package.state = 'UT'
+                            package.zip = '84103'
                         #Update the wrong address at the correct time.
                         if package.specialNotes == 'Wrong address listed' and inquiryDateTime >= truck.startDateTime:
                             truck.updateWrongAddress(package)

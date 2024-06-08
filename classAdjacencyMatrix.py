@@ -11,7 +11,10 @@ class AdjacencyMatrix:
         return cls.adjacencyMatrix
     
     @classmethod
-    #Time complexity: O(n^2), This function will take two addresses and return the distance value between them.
+    #Time complexity: a little larger than O(n), this because the function does not have to go 
+    #through the entire nested list to find both addresses.
+    
+    #This function will take two addresses and return the distance value between them.
     #This value is located at the intersection where the from_address is the row coordinate 
     #and the to_address is the column coordinate.
     def FindDistanceBetweenAddresses(cls, from_address, to_address):

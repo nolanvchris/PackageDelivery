@@ -67,7 +67,7 @@ class Truck:
         self.remainingPackageNum -= 1
         #package.truckMileageAtDelivery = self.milesTraveled
 
-    #Function total time complexity: for loop O(n) + FindDistanceBetweenAddresses O(n^2) 
+    #Function total time complexity: for loop O(n) + FindDistanceBetweenAddresses O(n)
     def FindClosestUndeliveredPackage(self):
         shortestDistance = float('inf')
         closestPackage = None
